@@ -196,6 +196,63 @@ function FloatingParticles() {
   )
 }
 
+// ─── CARD TOOLS ──────────────────────────────────────────────────────────────
+function CardTools() {
+  const toolsData = [
+    { name: 'HTML5', iconClass: 'fab', iconName: 'html5', color: '#E34F26' },
+    { name: 'CSS3', iconClass: 'fab', iconName: 'css3-alt', color: '#1572B6' },
+    { name: 'JavaScript', iconClass: 'fab', iconName: 'square-js', color: '#F7DF1E' },
+    { name: 'React', iconClass: 'fab', iconName: 'react', color: '#61DAFB' },
+    { name: 'Next.js', iconClass: 'fab', iconName: 'npm', color: '#ffffff' },
+    { name: 'Node.js', iconClass: 'fab', iconName: 'node-js', color: '#339933' },
+    { name: 'Express', iconClass: 'fas', iconName: 'code', color: '#aaaaaa' },
+    { name: 'PHP', iconClass: 'fab', iconName: 'php', color: '#777BB4' },
+    { name: 'Laravel', iconClass: 'fab', iconName: 'laravel', color: '#FF2D20' },
+    { name: 'MySQL', iconClass: 'fas', iconName: 'database', color: '#4479A1' },
+    { name: 'PostgreSQL', iconClass: 'fas', iconName: 'server', color: '#336791' },
+    { name: 'MongoDB', iconClass: 'fas', iconName: 'leaf', color: '#47A248' },
+    { name: 'Git', iconClass: 'fab', iconName: 'git-alt', color: '#F05032' },
+    { name: 'GitHub', iconClass: 'fab', iconName: 'github', color: '#ffffff' },
+    { name: 'Vercel', iconClass: 'fas', iconName: 'cloud', color: '#aaaaaa' },
+    { name: 'Figma', iconClass: 'fab', iconName: 'figma', color: '#F24E1E' },
+    { name: 'REST API', iconClass: 'fas', iconName: 'network-wired', color: '#6B7280' },
+    { name: 'JWT', iconClass: 'fas', iconName: 'key', color: '#aaaaaa' },
+    { name: 'Linux', iconClass: 'fab', iconName: 'linux', color: '#FCC624' },
+    { name: 'Docker', iconClass: 'fab', iconName: 'docker', color: '#2496ED' },
+    { name: 'tailwindcss', iconClass: 'fa-solid', iconName: 'wind', color: '#06B6D4' },
+  ]
+
+  return (
+    <section id="tools" className="card-tools-section">
+      <AnimatedSection className="section-header">
+        <span className="section-tag">
+          <i className="material-icons-round">auto_awesome</i>
+          Tech Stack
+        </span>
+        <h2 className="section-title">
+          Tools & <span className="gradient-text">Technologies</span>
+        </h2>
+        <p className="section-subtitle">
+          Hover to explore
+        </p>
+      </AnimatedSection>
+
+      <div className="card-tools-grid">
+        {toolsData.map((tool, index) => (
+          <AnimatedSection key={index} className="card-tool" delay={index * 30}>
+            <div className="card-tool-inner">
+              <div className="card-tool-icon" style={{ '--card-color': tool.color }}>
+                <i className={`${tool.iconClass} fa-${tool.iconName}`} style={{ color: tool.color }}></i>
+              </div>
+              <span className="card-tool-name">{tool.name}</span>
+            </div>
+          </AnimatedSection>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 // ─── HERO ───────────────────────────────────────────────────────────────────
 function Hero() {
   const [ref, isVisible] = useScrollAnimation({ threshold: 0.1 })
@@ -386,7 +443,7 @@ function About() {
         <div className="about-right">
           <AnimatedSection delay={200}>
             <p className="about-intro">
-              I'm a <strong>Full Stack Developer</strong> based in Sumedang, West Java,
+              I'm a <strong>Full Stack Developer</strong> based in Bandung, West Java,
               Indonesia. With a deep passion for creating elegant solutions to complex
               problems, I specialize in building modern web and mobile applications.
             </p>
@@ -470,17 +527,6 @@ function Skills() {
     },
   ]
 
-  const tools = [
-    { name: 'VS Code', iconClass: 'fas', iconName: 'code' },
-    { name: 'Git', iconClass: 'fab', iconName: 'github' },
-    { name: 'Laravel', iconClass: 'fab', iconName: 'laravel' },
-    { name: 'Postman', iconClass: 'fas', iconName: 'paper-plane' },
-    { name: 'MySQL', iconClass: 'fas', iconName: 'database' },
-    { name: 'Figma', iconClass: 'fab', iconName: 'figma' },
-    { name: 'Vercel', iconClass: 'fas', iconName: 'rocket' },
-    { name: 'Node.js', iconClass: 'fab', iconName: 'node-js' },
-  ]
-
   return (
     <section id="skills" className="skills-section">
       <AnimatedSection className="section-header">
@@ -525,21 +571,6 @@ function Skills() {
           </AnimatedSection>
         ))}
       </div>
-
-      <AnimatedSection className="tools-section" delay={500}>
-        <h3 className="tools-title">
-          <i className="material-icons-round">build</i>
-          Tools & Platforms
-        </h3>
-        <div className="tools-grid">
-          {tools.map((tool, index) => (
-            <div className="tool-card" key={index}>
-              <i className={`${tool.iconClass} fa-${tool.iconName}`}></i>
-              <span>{tool.name}</span>
-            </div>
-          ))}
-        </div>
-      </AnimatedSection>
     </section>
   )
 }
@@ -572,12 +603,28 @@ function Services() {
       features: ['Figma Design', 'Prototyping', 'User Research', 'Design Systems'],
     },
     {
-      icon: 'cloud',
-      color: 'var(--blue)',
-      bg: 'var(--blue-light)',
-      title: 'Cloud & DevOps',
-      description: 'Deploying and managing applications in the cloud with automated workflows and monitoring.',
-      features: ['AWS / GCP', 'Docker & K8s', 'CI/CD Pipeline', 'Monitoring'],
+      icon: 'settings',
+      color: 'var(--primary)',
+      bg: 'var(--primary-light)',
+      title: 'Full Stack Development',
+      description: 'Building applications from frontend, backend, to database with end-to-end solutions.',
+      features: ['React / Next.js', 'Node.js / Laravel', 'MySQL / MongoDB', 'Authentication'],
+    },
+    {
+      icon: 'cable',
+      color: 'var(--teal)',
+      bg: 'var(--teal-light)',
+      title: 'API Integration',
+      description: 'Connecting websites with APIs and third-party services seamlessly.',
+      features: ['REST / GraphQL', 'Payment Gateway', 'Third-party APIs', 'Webhook Integration'],
+    },
+    {
+      icon: 'rocket_launch',
+      color: 'var(--coral)',
+      bg: 'var(--coral-light)',
+      title: 'Deployment',
+      description: 'Deploying projects to Vercel / GitHub Pages with custom domain setup.',
+      features: ['Vercel / Netlify', 'GitHub Pages', 'Domain Setup', 'SSL Configuration'],
     },
   ]
 
@@ -745,27 +792,27 @@ function Portfolio() {
 function Testimonials() {
   const testimonials = [
     {
-      name: 'Ahmad Wijaya',
-      role: 'CEO, TechStart Indonesia',
+      name: 'Learning Journey',
+      role: 'Self-taught Developer',
       avatarClass: 'fas',
-      avatarName: 'user-tie',
-      text: 'Exceptional developer! Delivered our project ahead of schedule with outstanding quality. Highly recommended for any web development needs.',
+      avatarName: 'graduation-cap',
+      text: 'Every project I take on teaches me something new. I am committed to continuous learning and improving my skills day by day.',
       rating: 5,
     },
     {
-      name: 'Sarah Putri',
-      role: 'Product Manager, Digital Solutions',
+      name: 'Community Feedback',
+      role: 'Open Source Contributor',
       avatarClass: 'fas',
-      avatarName: 'user-tie',
-      text: 'Professional, communicative, and technically skilled. The best freelancer we have worked with. Will definitely hire again!',
+      avatarName: 'code',
+      text: 'Active in developer communities. I believe in sharing knowledge and helping others grow in their tech journey.',
       rating: 5,
     },
     {
-      name: 'Budi Santoso',
-      role: 'CTO, Innovate Labs',
+      name: 'Client Collaboration',
+      role: 'Freelance Projects',
       avatarClass: 'fas',
-      avatarName: 'user-ninja',
-      text: 'Impressive attention to detail and code quality. Our application runs smoothly and scales perfectly. Great partnership!',
+      avatarName: 'handshake',
+      text: 'I prioritize clear communication and understand client needs thoroughly before starting any project carefully and consistently',
       rating: 5,
     },
   ]
@@ -1087,6 +1134,7 @@ function AppContent() {
       <Hero />
       <About />
       <Skills />
+      <CardTools />
       <Services />
       <Portfolio />
       <Testimonials />
