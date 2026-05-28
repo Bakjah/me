@@ -1340,9 +1340,20 @@ section {
   color: white !important;
 }
 
+/* Tailwind SVG - icon cyan normally, white on hover */
+.card-tool-inner:hover .card-tool-icon .tw-path {
+  fill: white !important;
+}
+
 .card-tool-icon i {
   font-size: 28px;
   transition: all 0.3s ease;
+}
+
+/* Dark mode - GitHub & Next.js icon jadi putih */
+[data-theme="dark"] .fab.fa-github,
+[data-theme="dark"] .fab.fa-npm {
+  color: #ffffff !important;
 }
 
 .card-tool-name {
